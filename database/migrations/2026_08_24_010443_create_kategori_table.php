@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('kategori', function (Blueprint $table) {
             $table->id('id_kategori');
-            $table->int('user_id');
+            $table->integer('user_id');
             $table->string('nama_genre');
         });
     }

@@ -12,13 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('game', function (Blueprint $table) {
-            $table->id('id_game');
+            $table->id('id_game'); // Ini satu-satunya auto increment & primary key
             $table->string('nama', 255);
-            $table->string('deskripsi',);
-            $table->int('harga', 10);
-            $table->int('id_kategori',);
-            $table->int('id_promo',);
-            $table->string('gambar', 255);
+            $table->text('deskripsi')->nullable();
+            $table->integer('harga'); // Cukup gunakan ->integer()
+            $table->unsignedBigInteger('id_kategori')->nullable();
+            $table->unsignedBigInteger('id_promo')->nullable();
+            $table->string('gambar', 255)->nullable();
+            $table->timestamps();
         });
     }
 

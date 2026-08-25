@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('username', 255)->unique();
             $table->string('nickname', 100);
             $table->string('profil', 100 );
-            $table->string('deskripsi')>nullable();
+            $table->string('deskripsi')->nullable();
             $table->string('email');
             $table->string('level', 50);
         });
