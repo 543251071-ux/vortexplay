@@ -12,6 +12,8 @@ class Kategori extends Model
     protected $table = 'tb_kategori';
     protected $primaryKey = 'id_kategori';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'user_id',
         'nama_genre',

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('game', function (Blueprint $table) {
+        Schema::create('tb_game', function (Blueprint $table) {
             $table->id('id_game'); // Ini satu-satunya auto increment & primary key
             $table->string('nama', 255);
             $table->text('deskripsi')->nullable();

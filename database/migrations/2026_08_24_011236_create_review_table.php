@@ -7,12 +7,14 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-        Schema::create('review', function (Blueprint $table) {
-            $table->id();
+     * Run the migrations.App\Models\User::all()->toArray();
+        Schema::create('tb_review', function (Blueprint $table) {
+            $table->id('id_review');
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_game');
+            $table->integer('rating');
+            $table->text('komentar')->nullable();
+            $table->timestamp('tanggal_review')->nullable();
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('review');
+        Schema::dropIfExists('tb_review');
     }
 };

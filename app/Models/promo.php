@@ -12,6 +12,8 @@ class Promo extends Model
     protected $table = 'tb_promo';
     protected $primaryKey = 'id_promo';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'tanggal_awal',
         'tanggal_akhir',
