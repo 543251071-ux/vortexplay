@@ -2,31 +2,46 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\UserFactory;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
-use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password'])]
-#[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
-    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    // Menghubungkan ke nama tabel khusus
+    protected $table = 'tb_user';
+
+    // Menentukan primary key khusus
+    protected $primaryKey = 'id_user';
+
+    // Disable timestamps jika tabel tb_user tidak pakai created_at & updated_at
+    // public $timestamps = false;
+
+    protected $fillable = [
+        'username',
+        'password',
+        'nickname',
+        'profil',
+        'deskripsi',
+        'email',
+        'level',
+    ];
+
+    protected $hidden = [
+        'password',
+    ];
+
+    // Relasi ke Pembayaran
+    public function pembayarans()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Pembayaran::class, 'id_user', 'id_user');
+    }
+
+    // Relasi ke Review
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'id_user', 'id_user');
     }
 }
