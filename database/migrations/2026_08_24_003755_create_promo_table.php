@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tb_promo', function (Blueprint $table) {
             $table->id('id_promo');
-            $table->date('tanggal_awal');
-            $table->date('tanggal_akhir');
+            $table->string('kode_promo', 50)->unique();
+            $table->integer('diskon'); // persentase diskon, misal: 10 = 10%
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('promo');
+        Schema::dropIfExists('tb_promo');
     }
 };

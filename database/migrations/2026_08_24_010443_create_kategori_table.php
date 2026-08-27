@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tb_kategori', function (Blueprint $table) {
             $table->id('id_kategori');
-            $table->integer('user_id');
-            $table->string('nama_genre');
+            $table->string('nama_kategori');
+            $table->timestamps();
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kategori');
+        Schema::dropIfExists('tb_kategori');
     }
 };
